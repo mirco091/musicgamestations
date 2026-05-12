@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,400;0,700;1,400&family=Noto+Serif+JP:wght@300;400;700&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-jp: var(--app-font-jp);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root, .dark {
+  /* Deep space purple-black */
+  --background: 260 50% 4%;
+  --foreground: 210 40% 98%;
+
+  --border: 260 30% 15%;
+  --input: 260 30% 15%;
+  --ring: 320 80% 60%; /* Sakura pink glow */
+
+  --card: 260 40% 6%;
+  --card-foreground: 210 40% 98%;
+  --card-border: 260 30% 15%;
+
+  --popover: 260 50% 4%;
+  --popover-foreground: 210 40% 98%;
+  --popover-border: 260 30% 15%;
+
+  /* Indigo / Violet */
+  --primary: 270 70% 50%;
+  --primary-foreground: 210 40% 98%;
+
+  /* Sakura Pink */
+  --secondary: 330 80% 60%;
+  --secondary-foreground: 210 40% 98%;
+
+  --muted: 260 30% 12%;
+  --muted-foreground: 260 20% 70%;
+
+  /* Cyan */
+  --accent: 190 90% 50%;
+  --accent-foreground: 260 50% 4%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+
+  --app-font-sans: 'Plus Jakarta Sans', sans-serif;
+  --app-font-serif: 'Cinzel', serif;
+  --app-font-jp: 'Noto Serif JP', serif;
+  
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply font-sans antialiased bg-background text-foreground overflow-x-hidden;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-wide;
+  }
+  .font-jp {
+    font-family: var(--app-font-jp);
+  }
+}
+
+/* Custom glow utility */
+.glow-pink {
+  box-shadow: 0 0 20px 2px hsla(330, 80%, 60%, 0.4);
+}
+.glow-primary {
+  box-shadow: 0 0 30px 5px hsla(270, 70%, 50%, 0.3);
+}
+.text-glow {
+  text-shadow: 0 0 10px hsla(210, 40%, 98%, 0.5);
+}
+.text-glow-pink {
+  text-shadow: 0 0 15px hsla(330, 80%, 60%, 0.6);
+}
+
+/* Particle effects */
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+  50% { transform: translateY(-20px) scale(1.1); opacity: 0.8; }
+}
+.particle {
+  animation: float 4s ease-in-out infinite;
+}
